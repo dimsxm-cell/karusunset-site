@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Karusunset – Hébergement, location et import-export en Guadeloupe</title>
-<meta name="description" content="Karusunset, SAS basée à Baie-Mahault (Guadeloupe) : hébergement touristique de courte durée, location de voitures de prestige, sorties en mer, location de bateaux et import-export.">
+<title>Karusunset – Maisons modulaires, hébergement et import-export en Guadeloupe</title>
+<meta name="description" content="Karusunset, SAS basée à Baie-Mahault (Guadeloupe) : vente de maisons modulaires et tiny houses import-export, hébergement touristique de courte durée, location de voitures de prestige, sorties en mer et location de bateaux.">
 <meta name="theme-color" content="#0f1b2d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,6 +78,26 @@ section{padding:92px 0}
 .title{font-size:clamp(1.8rem,4vw,2.7rem);margin-bottom:14px}
 .lead{color:var(--muted);max-width:640px;font-size:1.05rem}
 .head{margin-bottom:44px}
+
+/* CATALOGUE */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:26px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.pcard:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(19,32,47,.12)}
+.pcard .ph{position:relative;aspect-ratio:4/3;overflow:hidden;background:#e8dfd2}
+.pcard .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.pcard .badge{position:absolute;top:12px;left:12px;background:var(--navy);color:#fff;font-size:.7rem;font-weight:600;padding:5px 12px;border-radius:99px;letter-spacing:.05em;text-transform:uppercase}
+.pcard .pbody{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.pcard h3{font-size:1.18rem}
+.pcard .psub{color:var(--sea);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.03em}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;font-size:.84rem;margin:2px 0}
+.specs div b{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.03em;color:var(--coral);font-weight:600}
+.specs div span{color:var(--ink)}
+.pcard p.desc{color:var(--muted);font-size:.92rem;flex:1}
+.pcard .pcta{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:4px}
+.pcard .pcta .btn{padding:10px 18px;font-size:.87rem}
+.pcard .pcta .btn:hover{transform:translateY(-2px)}
+.cat-note{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;margin-top:38px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.cat-note p{color:var(--muted);font-size:.95rem;max-width:560px}
 
 /* SERVICES */
 .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
@@ -158,6 +178,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <nav>
       <ul id="menu">
         <li><a href="#services">Activités</a></li>
+        <li><a href="#catalogue">Catalogue maisons</a></li>
         <li><a href="#societe">La société</a></li>
         <li><a href="#faq">Questions</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -175,10 +196,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <span class="eyebrow">Baie-Mahault · Guadeloupe</span>
     <h1>Hébergement, mobilité et mer : <em>vivez la Guadeloupe</em> autrement.</h1>
-    <p>Karusunset réunit hébergement touristique de courte durée, location de voitures de prestige, sorties en mer et location de bateaux, ainsi qu'une activité d'import-export.</p>
+    <p>Karusunset réunit hébergement touristique de courte durée, location de voitures de prestige, sorties en mer et location de bateaux, ainsi qu'une activité d'import-export — dont la vente de maisons modulaires, container homes et dômes clé en main.</p>
     <div class="btns">
-      <a class="btn primary" href="#contact">Nous contacter</a>
-      <a class="btn ghost" href="#services">Découvrir nos activités</a>
+      <a class="btn primary" href="#catalogue">Voir le catalogue</a>
+      <a class="btn ghost" href="#contact">Demander un devis</a>
     </div>
   </div>
 </section>
@@ -202,7 +223,200 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <article class="card rv" data-c="mobilite"><div class="ico">🚗</div><h3>Voitures de prestige</h3><p>Location de véhicules de prestige sans chauffeur, en courte ou longue durée, pour se déplacer avec style sur l'île.</p></article>
       <article class="card rv" data-c="mer"><div class="ico">⛵</div><h3>Sorties en mer</h3><p>Organisation de sorties en mer pour découvrir le littoral guadeloupéen et ses eaux.</p></article>
       <article class="card rv" data-c="mer"><div class="ico">🚤</div><h3>Location de bateaux</h3><p>Location de bateaux et éléments connexes, pour naviguer en toute liberté.</p></article>
-      <article class="card rv" data-c="pro"><div class="ico">📦</div><h3>Import-export</h3><p>Activité d'import-export entre la Guadeloupe et ses partenaires commerciaux.</p></article>
+      <article class="card rv" data-c="pro"><div class="ico">📦</div><h3>Import-export</h3><p>Activité d'import-export entre la Guadeloupe et ses partenaires commerciaux, dont des maisons modulaires prêtes à vivre. <a href="#catalogue" style="color:var(--sea);font-weight:600;text-decoration:none">Voir le catalogue →</a></p></article>
+    </div>
+  </div>
+</section>
+
+<section id="catalogue">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="kicker">Import-export · Catalogue</div>
+      <h2 class="title">Maisons modulaires, container homes &amp; dômes prêts à vivre</h2>
+      <p class="lead">Une sélection de modèles importables en Guadeloupe pour gîte, studio de jardin, écolodge ou extension d'habitation. Montage rapide, livraison et installation organisées par Karusunset. Tarifs et délais sur devis selon quantité et finitions.</p>
+    </div>
+
+    <div class="pgrid">
+      <article class="pcard rv">
+        <div class="ph"><span class="badge">Best-seller</span><img src="images/catalogue/t2.jpg" alt="Cabane modulaire T2 sur plage en Guadeloupe" loading="lazy"></div>
+        <div class="pbody">
+          <div class="psub">Modèle T2</div>
+          <h3>Cabane compacte chambre &amp; salle d'eau</h3>
+          <div class="specs">
+            <div><b>Surface</b><span>23,76 m²</span></div>
+            <div><b>Dimensions</b><span>6,6 × 3,6 m + balcon</span></div>
+            <div><b>Puissance</b><span>10 kW</span></div>
+            <div><b>Poids</b><span>≈ 4,5 t</span></div>
+          </div>
+          <p class="desc">Grande baie vitrée et balcon, idéale en gîte individuel bord de mer ou extension d'habitation.</p>
+          <div class="pcta"><span class="note">Sur devis</span><button class="btn primary pcta-btn" data-modele="T2 – Cabane compacte (23,76 m²)">Demander un devis</button></div>
+        </div>
+      </article>
+
+      <article class="pcard rv">
+        <div class="ph"><img src="images/catalogue/tmax.jpg" alt="Studio modulaire TMAX en montagne" loading="lazy"></div>
+        <div class="pbody">
+          <div class="psub">Modèle TMAX</div>
+          <h3>Studio grand volume</h3>
+          <div class="specs">
+            <div><b>Surface</b><span>30,42 m²</span></div>
+            <div><b>Dimensions</b><span>7,8 × 3,9 m</span></div>
+            <div><b>Puissance</b><span>11 kW</span></div>
+            <div><b>Poids</b><span>≈ 5 t</span></div>
+          </div>
+          <p class="desc">Le plus spacieux de la gamme, terrasse en option, volume ouvert pour location saisonnière haut de gamme.</p>
+          <div class="pcta"><span class="note">Sur devis</span><button class="btn primary pcta-btn" data-modele="TMAX – Studio grand volume (30,42 m²)">Demander un devis</button></div>
+        </div>
+      </article>
+
+      <article class="pcard rv">
+        <div class="ph"><img src="images/catalogue/t3.jpg" alt="Duplex modulaire T3 au bord d'une piscine" loading="lazy"></div>
+        <div class="pbody">
+          <div class="psub">Modèle T3</div>
+          <h3>Duplex à terrasse panoramique</h3>
+          <div class="specs">
+            <div><b>Surface</b><span>47,52 m²</span></div>
+            <div><b>Dimensions</b><span>6,6/7,8 × 3,2 m, H 6,2 m</span></div>
+            <div><b>Puissance</b><span>10 kW</span></div>
+            <div><b>Poids</b><span>≈ 8,5 t</span></div>
+          </div>
+          <p class="desc">Deux niveaux, terrasse à l'étage, 3 finitions (blanc, café, bois). Montage en 6 jours. Idéal Airbnb ou résidence secondaire.</p>
+          <div class="pcta"><span class="note">Sur devis</span><button class="btn primary pcta-btn" data-modele="T3 – Duplex panoramique (47,52 m²)">Demander un devis</button></div>
+        </div>
+      </article>
+
+      <article class="pcard rv">
+        <div class="ph"><img src="images/catalogue/t4.jpg" alt="Maisons modulaires T4 en bord de lagon" loading="lazy"></div>
+        <div class="pbody">
+          <div class="psub">Modèle T4</div>
+          <h3>Duplex large &amp; lumineux</h3>
+          <div class="specs">
+            <div><b>Surface</b><span>56,16 m²</span></div>
+            <div><b>Dimensions</b><span>6,6/7,8 × 3,6 m, H 6,2 m</span></div>
+            <div><b>Puissance</b><span>10 kW</span></div>
+            <div><b>Poids</b><span>≈ 9,1 t</span></div>
+          </div>
+          <p class="desc">Version élargie du T3 pour un séjour familial confortable, très demandée pour les complexes d'hébergement en bord d'eau.</p>
+          <div class="pcta"><span class="note">Sur devis</span><button class="btn primary pcta-btn" data-modele="T4 – Duplex large (56,16 m²)">Demander un devis</button></div>
+        </div>
+      </article>
+
+      <article class="pcard rv">
+        <div class="ph"><img src="images/catalogue/a5.jpg" alt="Cabane A5 au toit de chaume tropical" loading="lazy"></div>
+        <div class="pbody">
+          <div class="psub">Modèle A5</div>
+          <h3>Cabane toit de chaume tropical</h3>
+          <div class="specs">
+            <div><b>Surface</b><span>26,5 m²</span></div>
+            <div><b>Dimensions</b><span>6,5 × 4,065 m</span></div>
+            <div><b>Puissance</b><span>12 kW</span></div>
+            <div><b>Poids</b><span>≈ 6 t</span></div>
+          </div>
+          <p class="desc">Esprit paillote traditionnelle, salle de bain complète intégrée, teintes brun ou bois. Décor tropical authentique.</p>
+          <div class="pcta"><span class="note">Sur devis</span><button class="btn primary pcta-btn" data-modele="A5 – Cabane toit de chaume (26,5 m²)">Demander un devis</button></div>
+        </div>
+      </article>
+
+      <article class="pcard rv">
+        <div class="ph"><img src="images/catalogue/a2.jpg" alt="Cabanes arche A2 posées sur un plan d'eau" loading="lazy"></div>
+        <div class="pbody">
+          <div class="psub">Modèle A2</div>
+          <h3>Cabane arche nature</h3>
+          <div class="specs">
+            <div><b>Surface</b><span>29 m²</span></div>
+            <div><b>Dimensions</b><span>6,6 × 3,6 m</span></div>
+            <div><b>Puissance</b><span>10 kW</span></div>
+            <div><b>Poids</b><span>≈ 3,8 t</span></div>
+          </div>
+          <p class="desc">Silhouette arrondie qui se fond dans le paysage, chambre et salle de bain intégrées. Esprit écolodge au bord de l'eau.</p>
+          <div class="pcta"><span class="note">Sur devis</span><button class="btn primary pcta-btn" data-modele="A2 – Cabane arche nature (29 m²)">Demander un devis</button></div>
+        </div>
+      </article>
+
+      <article class="pcard rv">
+        <div class="ph"><img src="images/catalogue/c22.jpg" alt="Container extensible C2-2 en forêt" loading="lazy"></div>
+        <div class="pbody">
+          <div class="psub">Modèle C2-2</div>
+          <h3>Container extensible</h3>
+          <div class="specs">
+            <div><b>Surface</b><span>35,4 m² déplié</span></div>
+            <div><b>Dimensions</b><span>8,5 × 2,27 → 4,17 m</span></div>
+            <div><b>Puissance</b><span>10 kW</span></div>
+            <div><b>Poids</b><span>≈ 5,2 t</span></div>
+          </div>
+          <p class="desc">Livré replié pour un transport compact, déploiement rapide sur site avec chambre et salle de bain spa.</p>
+          <div class="pcta"><span class="note">Sur devis</span><button class="btn primary pcta-btn" data-modele="C2-2 – Container extensible (35,4 m²)">Demander un devis</button></div>
+        </div>
+      </article>
+
+      <article class="pcard rv">
+        <div class="ph"><img src="images/catalogue/c23.jpg" alt="Container XXL C2-3 en montagne" loading="lazy"></div>
+        <div class="pbody">
+          <div class="psub">Modèle C2-3</div>
+          <h3>Container XXL 11,5 m</h3>
+          <div class="specs">
+            <div><b>Surface</b><span>48 m² déplié</span></div>
+            <div><b>Dimensions</b><span>11,5 × 2,27 → 4,17 m</span></div>
+            <div><b>Puissance</b><span>10 kW</span></div>
+            <div><b>Poids</b><span>≈ 5,2 t</span></div>
+          </div>
+          <p class="desc">Chambre, cuisine et salon réunis. Jusqu'à 3 unités par conteneur 40 pieds au transport : solution d'import la plus économique.</p>
+          <div class="pcta"><span class="note">Sur devis</span><button class="btn primary pcta-btn" data-modele="C2-3 – Container XXL (48 m²)">Demander un devis</button></div>
+        </div>
+      </article>
+
+      <article class="pcard rv">
+        <div class="ph"><img src="images/catalogue/d2.jpg" alt="Dôme bulle D2 dans un jardin automnal" loading="lazy"></div>
+        <div class="pbody">
+          <div class="psub">Modèle D2</div>
+          <h3>Dôme bulle — toutes tailles</h3>
+          <div class="specs">
+            <div><b>Surface</b><span>14,9 à 30,6 m²</span></div>
+            <div><b>Dimensions</b><span>5×3,5 m à 8,5×4 m</span></div>
+            <div><b>Puissance</b><span>Sur devis</span></div>
+            <div><b>Poids</b><span>Sur devis</span></div>
+          </div>
+          <p class="desc">Bulle transparente traitée anti-UV, aménageable en chambre + salle de bain, combinable pour une suite plus grande. Parfaite en glamping.</p>
+          <div class="pcta"><span class="note">Plusieurs tailles</span><button class="btn primary pcta-btn" data-modele="D2 – Dôme bulle (14,9 à 30,6 m²)">Demander un devis</button></div>
+        </div>
+      </article>
+
+      <article class="pcard rv">
+        <div class="ph"><img src="images/catalogue/d3.jpg" alt="Dôme étoile D3 avec intérieur romantique" loading="lazy"></div>
+        <div class="pbody">
+          <div class="psub">Modèle D3</div>
+          <h3>Dôme étoile modulable</h3>
+          <div class="specs">
+            <div><b>Surface</b><span>17,4 à 45,7 m²</span></div>
+            <div><b>Dimensions</b><span>Ø 4 à 6 m + extensions</span></div>
+            <div><b>Puissance</b><span>Sur devis</span></div>
+            <div><b>Poids</b><span>Sur devis</span></div>
+          </div>
+          <p class="desc">Structure sphérique assemblée sur site, résistance testée typhon niveau 12, combinable en 1 ou 2 chambres. Expérience « nuit à la belle étoile » clé en main.</p>
+          <div class="pcta"><span class="note">Plusieurs tailles</span><button class="btn primary pcta-btn" data-modele="D3 – Dôme étoile (17,4 à 45,7 m²)">Demander un devis</button></div>
+        </div>
+      </article>
+
+      <article class="pcard rv">
+        <div class="ph"><img src="images/catalogue/p20.jpg" alt="Maison container pliable P20" loading="lazy"></div>
+        <div class="pbody">
+          <div class="psub">Modèle P20</div>
+          <h3>Maison container pliable</h3>
+          <div class="specs">
+            <div><b>Surface</b><span>37 m²</span></div>
+            <div><b>Dimensions</b><span>6,32 × 5,9 m (repliée 2,2 × 5,9 m)</span></div>
+            <div><b>Puissance</b><span>—</span></div>
+            <div><b>Poids</b><span>≈ 3,5 t</span></div>
+          </div>
+          <p class="desc">2 chambres, salle de bain et cuisine en configuration pliable prête à transporter. Montage très rapide à l'arrivée sur site.</p>
+          <div class="pcta"><span class="note">Sur devis</span><button class="btn primary pcta-btn" data-modele="P20 – Maison container pliable (37 m²)">Demander un devis</button></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="cat-note rv">
+      <p>Un projet précis en tête (gîte, écolodge, bureau de jardin, extension) ? Décrivez-le-nous : nous revenons vers vous avec un devis incluant transport et installation en Guadeloupe.</p>
+      <a class="btn primary" href="#contact">Parler de mon projet</a>
     </div>
   </div>
 </section>
@@ -262,6 +476,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <label>Votre email<input type="email" name="email" required autocomplete="email"></label>
       <label>Sujet
         <select name="sujet">
+          <option>Achat d'une maison modulaire (catalogue)</option>
           <option>Hébergement touristique</option>
           <option>Location de voiture de prestige</option>
           <option>Sortie en mer</option>
@@ -343,8 +558,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     if(io) io.observe(el); else { el.classList.add('in'); el.querySelectorAll('[data-n]').forEach(count); }
   });
 
+  // CTA catalogue -> formulaire de contact pré-rempli
+  document.querySelectorAll('.pcta-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var modele = btn.dataset.modele;
+      var sel = document.querySelector('select[name="sujet"]');
+      if(sel) sel.value = "Achat d'une maison modulaire (catalogue)";
+      var ta = document.querySelector('textarea[name="message"]');
+      if(ta) ta.value = 'Bonjour, je suis intéressé(e) par le modèle ' + modele + '. Merci de me recontacter avec un devis (prix, délais, transport et installation en Guadeloupe).';
+      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+      var nomInput = document.querySelector('input[name="nom"]');
+      if(nomInput) setTimeout(function(){ nomInput.focus(); }, 500);
+    });
+  });
+
   // Menu actif
-  var secs = ['services','societe','faq','contact','mentions'].map(function(id){return document.getElementById(id);});
+  var secs = ['services','catalogue','societe','faq','contact','mentions'].map(function(id){return document.getElementById(id);});
   var links = document.querySelectorAll('#menu a');
   window.addEventListener('scroll', function(){
     var y = window.scrollY + 120, cur = '';
