@@ -33,3 +33,5 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline-color:#f28c28
 footer{background:#f7eadc}
 dialog{background:#fffdf9}
 dialog::backdrop{background:#0f1b2ded}
+
+.reference-grid{grid-template-columns:1fr}.reference-grid figure:first-child{max-width:650px}.reference-grid figure:last-child img{height:auto;max-height:1000px}.reference-grid figure:last-child{width:100%}
