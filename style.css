@@ -19,7 +19,8 @@ body,header{background:#fffdf9}
 .card-image>span{background:#fff8f0f2}
 .services{background:#172338}
 .service-list a{border-color:#536071}
-.service-list p,.contact .note{color:#e7e1d9}
+.service-list p,.contact .note,.services .note{color:#e7e1d9}
+.services .note{margin:25px 0 0}
 .service-list>a>span{color:#ffb66c}
 .contact{background:#172338}
 .contact address a{border-color:#d18946}
