@@ -60,7 +60,21 @@ Poser d'abord les **tokens** dans `:root` (couleurs, typo, espacements, rayons, 
 #### Mascotte (si demandée)
 Voir `references/mascotte.md` : personnage rectangulaire à deux yeux, sobre, qui apparaît de temps en temps sur certaines pages. Jamais sur les écrans de saisie sensibles.
 
+### 4 bis. Mode application (plusieurs écrans)
+Si l'utilisateur veut « une petite appli / un SaaS / une web app » (comme une planche Figma de flow avec écrans numérotés), ne fais PAS une page vitrine : construis une **maquette interactive cliquable**.
+
+1. **Carte du flow d'abord** (dans le PRD) : numérote les écrans (E1, E2…), 6 à 9 écrans, un parcours principal bout en bout. Modèle : liste → créer (2-3 étapes) → envoyer/partager → suivi → vue du client → succès (notification qui met la liste à jour).
+2. **Une seule appli, plusieurs écrans** : `app/index.html` + `app.css` + `app.js`, routage par `#/écran`, sans build. Réutilise les variables et boutons du CSS de la vitrine (`../style.css`).
+3. **Données d'exemple, étiquetées** : bandeau « Maquette interactive, rien n'est réellement envoyé ». Noms du type « Client exemple A », e-mails en `example.com`. Les boutons qui ne font rien de réel le disent dans un message (« Démo : … n'est pas actif »). Jamais de faux témoignage ni de faux chiffre.
+4. **État partagé entre écrans** (sessionStorage dans try/catch) : ce que l'utilisateur crée à l'écran 2 apparaît dans la liste, signer à l'écran 6 passe le statut à « Signé ».
+5. **Sécurité de base** : tout texte saisi par l'utilisateur qui est réaffiché passe par une fonction d'échappement HTML. Teste-le avec `<b>Test</b>`.
+6. **Navigation** : barre latérale sur bureau, barre d'onglets en bas sur mobile ; `aria-current`, focus sur le titre à chaque changement d'écran, feuille de partage fermable à Échap, `aria-live` pour les messages.
+7. **Interactions réelles quand c'est possible** : par ex. un vrai cadre de signature au doigt (canvas, événements pointeur) plutôt qu'une image.
+8. **Mascotte** : uniquement sur l'écran de succès (et l'accueil de la vitrine).
+9. Relie la vitrine à la démo (bouton « Essayer la démo »).
+
 ### 5. Vérifier (obligatoire)
+En mode application, teste le **parcours complet avec Playwright** (clics, formulaire vide puis rempli, dessin sur le canvas, retour à la liste) et vérifie : zéro erreur JS, zéro débordement horizontal, statut mis à jour, saisie échappée.
 Avec Playwright (déjà installé, ne pas le réinstaller) :
 - Capture chaque page en 390 px (mobile) et 1440 px (bureau).
 - Regarde les images. Corrige : débordements, contrastes faibles, texte coupé, espacements incohérents, animation qui gêne.
