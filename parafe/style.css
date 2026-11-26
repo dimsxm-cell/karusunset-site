@@ -76,6 +76,9 @@ h3 { font-family: var(--sans); font-weight: 600; font-size: 1.1rem; letter-spaci
   border-bottom: 1px solid transparent;
 }
 .brand { font-family: var(--serif); font-size: 1.7rem; text-decoration: none; letter-spacing: -0.02em; }
+.brand { display: inline-flex; align-items: center; }
+.brand-logo { display: block; height: 34px; width: auto; }
+.brand-logo-s { height: 28px; }
 .nav nav { display: none; gap: 28px; }
 .nav nav a { text-decoration: none; font-size: .95rem; color: var(--muted); transition: color .2s; }
 .nav nav a:hover { color: var(--ink); }
