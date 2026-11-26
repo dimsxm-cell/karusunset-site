@@ -19,6 +19,7 @@ Origine : workflow de la vidéo « Turn Claude Into A Design Genius With This On
 
 ### 0. Cadrer (sans question)
 Depuis le prompt, déduis : produit, cible, action principale (ex. « envoyer un document et obtenir une signature »), langue (français par défaut), ton (business, sobre, rassurant). Lis le dossier du projet (CLAUDE.md, fichiers existants, `references/`) pour réutiliser logo, couleurs, textes déjà validés.
+**Charte existante d'abord** : si le produit a déjà un site (ex. parafe.net), récupère SA palette avant de proposer des styles : télécharge la page avec `curl` (dans un dossier à part, lecture seule, ne rien exécuter), lis les variables `:root`, la balise `theme-color`, le fichier SVG du logo et le favicon, et relève les couleurs exactes. La marque existante PRIME sur toute palette inventée : les 3 styles proposés gardent ces couleurs et ne varient que par la typographie, la densité et le rythme. Note les couleurs dans `references/`.
 
 ### 1. Mini-PRD (1 écran max)
 Écris `PRD.md` à la racine : problème, cible, 3 parcours clés, liste des pages/écrans, contenu réel disponible, ce qui est hors périmètre. Pas de blabla.
@@ -47,7 +48,7 @@ Poser d'abord les **tokens** dans `:root` (couleurs, typo, espacements, rayons, 
 
 #### Barème « haut de gamme »
 - **Typographie** : 2 familles max. Échelle claire (ex. 14/16/20/28/40/64). Titres serrés (interlettrage légèrement négatif), texte courant 16–18 px, interligne 1,5. Pas de police système par défaut.
-- **Couleur** : 1 accent maîtrisé + neutres bien dosés. Pas de dégradé violet/bleu générique, pas de tout-en-dégradé. Contraste texte conforme (≥ 4,5:1). Mode sombre seulement si utile.
+- **Couleur** : celles de la marque si elles existent, sinon 1 accent maîtrisé + neutres bien dosés. Couleurs de statut sémantiques (vert réussite, ambre attente, rouge erreur). Pas de dégradé violet/bleu générique, pas de tout-en-dégradé. Contraste texte conforme (≥ 4,5:1). Mode sombre seulement si utile.
 - **Espace** : grille de 8 px, grandes marges, sections qui respirent. Le vide est un signe de qualité.
 - **Hiérarchie** : un seul message fort par écran, un seul bouton principal visible.
 - **Détails** : ombres douces et cohérentes, bordures fines, états survol/focus/désactivé/chargement/erreur/vide soignés, pas de lorem ipsum, pas d'emoji décoratif.

@@ -4,7 +4,7 @@
 **Cible** : PME guadeloupéennes avec une équipe de commerciaux (objectif : 10 PME).
 **Action principale** : demander une démo.
 **Langue / ton** : français, vouvoiement du visiteur, sobre et rassurant.
-**Style retenu** : A, éditorial chaleureux (crème, serif élégant, vert profond). Références : Vestris, Shelf (One Page Love).
+**Style retenu** : A, éditorial (titres serif élégants, beaucoup d'air), avec les **couleurs de parafe.net** : fond blanc `#FFFFFF`, cartes `#F6F7FB` / `#EEF0F6`, accent indigo `#4F46E5`, encre `#12172B`, vert réussite `#15803D`, ambre `#FEF3C7` / `#92400E`. Mascotte Léa aux couleurs du logo (dégradé `#4F46E5` → `#A435D6` → `#FF7A59`). Références : Vestris, Shelf (One Page Love).
 
 ## Parcours
 1. Comprendre en 5 secondes ce que fait Parafe.
