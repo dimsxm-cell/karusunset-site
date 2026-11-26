@@ -13,7 +13,7 @@
   var ICON = {
     doc: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>'
   };
-  var MASCOT = '<svg class="mascot" viewBox="0 0 80 104" width="84" height="109" aria-hidden="true"><ellipse class="m-shadow" cx="40" cy="91" rx="24" ry="4.5"/><g class="m-body"><polygon class="m-shape" points="40,22 15,80 65,80"/><g class="m-eyes"><g class="m-eye"><circle cx="31" cy="61" r="7" fill="#fff"/><circle cx="33" cy="62" r="3.2" fill="#16201B"/></g><g class="m-eye"><circle cx="49" cy="61" r="7" fill="#fff"/><circle cx="51" cy="62" r="3.2" fill="#16201B"/></g></g></g></svg>';
+  var MASCOT = '<svg class="mascot" viewBox="0 0 112 128" width="96" height="110" aria-hidden="true"><ellipse class="m-shadow" cx="56" cy="119" rx="30" ry="4.5"/><g class="m-body"><image href="../assets/lea-body.webp" x="6" y="6" width="100" height="109.4"/><g class="m-eye"><ellipse cx="40" cy="80" rx="5.2" ry="6" fill="#1B1412"/><circle cx="38.4" cy="77.6" r="1.7" fill="#fff"/><circle cx="41.6" cy="82.6" r=".8" fill="#fff" opacity=".55"/></g><g class="m-eye"><ellipse cx="73" cy="80" rx="5.2" ry="6" fill="#1B1412"/><circle cx="71.4" cy="77.6" r="1.7" fill="#fff"/><circle cx="74.6" cy="82.6" r=".8" fill="#fff" opacity=".55"/></g><path d="M50.5 88 Q56.5 93.5 62.5 88" fill="none" stroke="#2B1A14" stroke-width="1.7" stroke-linecap="round"/></g></svg>';
 
   function blankDraft() { return { type: 'Bon de commande', client: '', contact: '', message: '' }; }
   function seed() {
@@ -214,7 +214,7 @@
   }
 
   // ---------- Léa, assistante (réponses préparées à l'avance, ce n'est pas une IA) ----------
-  var LEA_AV = '<svg class="mascot lea-av" viewBox="6 8 68 84" width="30" height="36" aria-hidden="true"><polygon class="m-shape" points="40,22 15,80 65,80"/><circle cx="31" cy="61" r="7" fill="#fff"/><circle cx="33" cy="62" r="3.2" fill="#16201B"/><circle cx="49" cy="61" r="7" fill="#fff"/><circle cx="51" cy="62" r="3.2" fill="#16201B"/></svg>';
+  var LEA_AV = '<svg class="mascot lea-av" viewBox="0 0 112 128" width="38" height="43" aria-hidden="true"><g class="m-body"><image href="../assets/lea-body.webp" x="6" y="6" width="100" height="109.4"/><g class="m-eye"><ellipse cx="40" cy="80" rx="5.2" ry="6" fill="#1B1412"/><circle cx="38.4" cy="77.6" r="1.7" fill="#fff"/><circle cx="41.6" cy="82.6" r=".8" fill="#fff" opacity=".55"/></g><g class="m-eye"><ellipse cx="73" cy="80" rx="5.2" ry="6" fill="#1B1412"/><circle cx="71.4" cy="77.6" r="1.7" fill="#fff"/><circle cx="74.6" cy="82.6" r=".8" fill="#fff" opacity=".55"/></g><path d="M50.5 88 Q56.5 93.5 62.5 88" fill="none" stroke="#2B1A14" stroke-width="1.7" stroke-linecap="round"/></g></svg>';
   var lea = { open: false, visible: true, msgs: [], flow: null, route: { name: 'documents', arg: null } };
 
   function msgFor(type, client) {

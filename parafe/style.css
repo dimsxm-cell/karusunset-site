@@ -113,7 +113,6 @@ h3 { font-family: var(--sans); font-weight: 600; font-size: 1.1rem; letter-spaci
 /* Mascotte : une seule apparition animée sur la page */
 .mascot-wrap { position: absolute; top: 0; right: 8%; z-index: 2; }
 .mascot { overflow: visible; }
-.mascot .m-shape { fill: var(--accent); stroke: var(--accent); stroke-width: 14; stroke-linejoin: round; }
 .mascot .m-shadow { fill: rgba(22,32,27,.14); transform-box: fill-box; transform-origin: center; }
 .mascot .m-body, .mascot .m-eye { transform-box: fill-box; transform-origin: center bottom; }
 .mascot .m-eye { transform-origin: center; }
