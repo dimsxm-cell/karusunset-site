@@ -1,9 +1,9 @@
 # Mascotte (version de départ pour Parafe)
 
-Description donnée par l'utilisateur : petit personnage **un peu rectangulaire**, **deux yeux**, qui **rebondit**. Contexte business : sobre, pas de blague, quelques animations de temps en temps sur certaines pages. L'utilisateur peut fournir une image de référence : si elle existe dans `references/`, elle PRIME sur cette description.
+Description donnée par l'utilisateur : petit personnage **en triangle** (il était rectangulaire dans la première version, changé à sa demande), **deux yeux**, qui **rebondit**. Contexte business : sobre, pas de blague, quelques animations de temps en temps sur certaines pages. L'utilisateur peut fournir une image de référence : si elle existe dans `references/`, elle PRIME sur cette description.
 
 ## Forme
-- SVG inline, rectangle aux coins arrondis (rayon ~ 25 % de la largeur), proportion ~ 4:5.
+- SVG inline, triangle aux coins arrondis (polygone + contour de même couleur, `stroke-linejoin: round`), pointe en haut, base large.
 - Deux yeux ronds simples (pas de bouche, ou un trait minimal). Couleur = accent du style choisi, yeux en blanc/neutre foncé.
 - Ombre au sol ellipse, légère, qui s'écrase quand le personnage retombe.
 

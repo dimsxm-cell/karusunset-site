@@ -13,7 +13,7 @@
   var ICON = {
     doc: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>'
   };
-  var MASCOT = '<svg class="mascot" viewBox="0 0 80 104" width="84" height="109" aria-hidden="true"><ellipse class="m-shadow" cx="40" cy="98" rx="24" ry="4.5"/><g class="m-body"><rect x="10" y="12" width="60" height="78" rx="16"/><g class="m-eyes"><g class="m-eye"><circle cx="29" cy="44" r="8" fill="#fff"/><circle cx="31" cy="45" r="3.6" fill="#16201B"/></g><g class="m-eye"><circle cx="51" cy="44" r="8" fill="#fff"/><circle cx="53" cy="45" r="3.6" fill="#16201B"/></g></g></g></svg>';
+  var MASCOT = '<svg class="mascot" viewBox="0 0 80 104" width="84" height="109" aria-hidden="true"><ellipse class="m-shadow" cx="40" cy="91" rx="24" ry="4.5"/><g class="m-body"><polygon class="m-shape" points="40,22 15,80 65,80"/><g class="m-eyes"><g class="m-eye"><circle cx="31" cy="61" r="7" fill="#fff"/><circle cx="33" cy="62" r="3.2" fill="#16201B"/></g><g class="m-eye"><circle cx="49" cy="61" r="7" fill="#fff"/><circle cx="51" cy="62" r="3.2" fill="#16201B"/></g></g></g></svg>';
 
   function blankDraft() { return { type: 'Bon de commande', client: '', contact: '', message: '' }; }
   function seed() {
