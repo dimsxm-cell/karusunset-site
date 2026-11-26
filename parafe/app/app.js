@@ -213,6 +213,155 @@
     toastTimer = setTimeout(function () { t.classList.remove('show'); }, 3600);
   }
 
+  // ---------- Léa, assistante (réponses préparées à l'avance, ce n'est pas une IA) ----------
+  var LEA_AV = '<svg class="mascot lea-av" viewBox="6 8 68 84" width="30" height="36" aria-hidden="true"><polygon class="m-shape" points="40,22 15,80 65,80"/><circle cx="31" cy="61" r="7" fill="#fff"/><circle cx="33" cy="62" r="3.2" fill="#16201B"/><circle cx="49" cy="61" r="7" fill="#fff"/><circle cx="51" cy="62" r="3.2" fill="#16201B"/></svg>';
+  var lea = { open: false, visible: true, msgs: [], flow: null, route: { name: 'documents', arg: null } };
+
+  function msgFor(type, client) {
+    return 'Bonjour ' + client + ', voici votre ' + type.toLowerCase() + ' à signer. Vous pouvez le faire depuis votre téléphone, en quelques secondes. Merci.';
+  }
+  function leaSay(t) { lea.msgs.push({ from: 'lea', text: t }); }
+  function leaMe(t) { lea.msgs.push({ from: 'me', text: t }); }
+
+  function leaChips() {
+    var n = lea.route.name, c = [];
+    if (n === 'documents') c = [['pending', 'Que veut dire « En attente » ?'], ['howsend', 'Comment envoyer un document ?'], ['wheresig', 'Où voir la signature ?']];
+    else if (n === 'nouveau') c = [['type', 'Quel type choisir ?']];
+    else if (n === 'destinataire') c = [['contact', 'Quel contact indiquer ?'], ['msg', 'Écrire le message pour moi']];
+    else if (n === 'envoi') c = [['clientsees', 'Que verra mon client ?'], ['share', 'Comment partager le lien ?']];
+    else if (n === 'suivi') c = [['steps', 'Que veulent dire les étapes ?'], ['next', 'Et maintenant ?']];
+    c.push(['guide', 'Préparer un document avec Léa']);
+    return c;
+  }
+
+  function leaAnswer(id) {
+    var d = lea.route.arg ? find(lea.route.arg) : null;
+    switch (id) {
+      case 'pending': return 'Le document est parti chez votre client, qui ne l’a pas encore signé. Ouvrez-le pour suivre son avancement.';
+      case 'howsend': return 'Cliquez sur « Nouveau document », choisissez le type, indiquez votre client, vérifiez, puis envoyez. Je peux aussi le faire avec vous.';
+      case 'wheresig': return 'Ouvrez un document « Signé » : la signature de votre client s’affiche dans sa fiche.';
+      case 'type': return 'Bon de commande : votre client valide ce qu’il achète. Devis : il accepte votre proposition. Contrat : il s’engage par écrit. Choisissez selon ce que vous avez convenu avec lui.';
+      case 'contact': return 'Un e-mail ou un numéro de téléphone suffit : c’est là que votre client recevra le lien. Dans cette démo, rien n’est réellement envoyé.';
+      case 'clientsees': return 'Votre client reçoit votre message, ouvre le document sur son téléphone, le lit puis signe avec le doigt. Après l’envoi, vous pouvez essayer à sa place.';
+      case 'share': return 'Après « Envoyer au client », une feuille propose de copier le lien ou de le partager. Dans cette démo, le partage n’est pas actif.';
+      case 'steps': return 'Créé : le document existe. Envoyé : il est parti chez votre client. Ouvert : votre client l’a consulté. Signé : c’est terminé.';
+      case 'next':
+        if (!d) return 'Retournez à la liste des documents pour choisir le suivant.';
+        if (d.status === 'sent') return 'Votre client n’a pas encore signé. Pour la démo, vous pouvez signer à sa place avec « Simuler la vue du client ».';
+        if (d.status === 'signed') return 'C’est signé. Vous pouvez passer au client suivant.';
+        return 'Ce brouillon n’est pas encore parti. Terminez-le pour l’envoyer.';
+    }
+    return '';
+  }
+
+  function leaAsk(id) {
+    if (id === 'guide') {
+      leaMe('Préparer un document avec Léa');
+      lea.flow = { step: 'type', data: {} };
+      leaSay('Avec plaisir. Quel type de document voulez-vous faire signer ?');
+      leaRender('input'); return;
+    }
+    var label = id;
+    leaChips().forEach(function (c) { if (c[0] === id) label = c[1]; });
+    leaMe(label);
+    if (id === 'msg') {
+      var field = document.getElementById('f-msg'), cn = document.getElementById('f-client');
+      var name = cn ? cn.value.trim() : '', text = name ? msgFor(state.draft.type, name) : defaultMsg(state.draft.type);
+      if (field) {
+        field.value = text;
+        leaSay('Voici un message prêt à l’emploi : « ' + text + ' » Je l’ai ajouté dans le champ, vous pouvez le modifier.');
+        leaClose(); toast('Message ajouté par Léa.'); return;
+      }
+      leaSay('Ouvrez l’étape « Destinataire » et je rédigerai le message pour vous.');
+    } else {
+      leaSay(leaAnswer(id));
+    }
+    leaRender();
+  }
+
+  function leaSubmit() {
+    var f = lea.flow, input = document.getElementById('lea-field');
+    if (!f || !input) return;
+    var v = input.value.trim();
+    if (!v) { input.focus(); return; }
+    leaMe(v);
+    if (f.step === 'client') {
+      f.data.client = v; f.step = 'contact';
+      leaSay('Merci. Quel est son e-mail ou son numéro de téléphone ?');
+      leaRender('input');
+    } else if (f.step === 'contact') {
+      f.data.contact = v; f.step = 'confirm';
+      leaSay('Voici le message que je propose : « ' + msgFor(f.data.type, f.data.client) + ' » Je prépare le document avec ça ?');
+      leaRender();
+    }
+  }
+
+  function leaAction(act, a) {
+    if (act === 'lea-toggle') { if (lea.open) leaClose(); else leaOpen(); }
+    else if (act === 'lea-close') leaClose();
+    else if (act === 'lea-ask') leaAsk(a.getAttribute('data-v'));
+    else if (act === 'lea-type') {
+      var t = a.getAttribute('data-v');
+      lea.flow.data.type = t; lea.flow.step = 'client';
+      leaMe(t); leaSay('Très bien. Quel est le nom de votre client ?');
+      leaRender('input');
+    }
+    else if (act === 'lea-apply') {
+      var dd = lea.flow.data;
+      state.draft = { type: dd.type, client: dd.client, contact: dd.contact, message: msgFor(dd.type, dd.client) };
+      state.flash = 'Léa a préparé le document. Vérifiez, puis envoyez.';
+      save(); leaMe('Oui, préparez-le.');
+      leaSay('C’est prêt : vérifiez le récapitulatif, puis envoyez.');
+      lea.flow = null; leaClose();
+      if (location.hash === '#/envoi') route(); else location.hash = '#/envoi';
+    }
+    else if (act === 'lea-cancel') { leaMe('Non, merci.'); lea.flow = null; leaSay('D’accord. Je reste là si besoin.'); leaRender(); }
+  }
+
+  function leaOpen() {
+    if (!lea.msgs.length) leaSay('Bonjour, je suis Léa. Je peux vous expliquer cet écran ou préparer un document avec vous. Mes réponses sont préparées à l’avance : c’est une démo.');
+    lea.open = true; leaRender('close');
+  }
+  function leaClose() {
+    lea.open = false; leaRender();
+    var f = document.querySelector('.lea-fab'); if (f) f.focus();
+  }
+
+  function leaRender(focus) {
+    var root = document.getElementById('lea-root');
+    if (!root) return;
+    if (!lea.visible) { root.innerHTML = ''; return; }
+    if (!lea.open) {
+      root.innerHTML = '<button class="lea-fab" type="button" data-action="lea-toggle" aria-expanded="false" aria-controls="lea-panel">' + LEA_AV + '<span>Léa</span></button>';
+      return;
+    }
+    var log = lea.msgs.map(function (m) { return '<div class="b ' + (m.from === 'lea' ? 'b-lea' : 'b-me') + '">' + esc(m.text) + '</div>'; }).join('');
+    var f = lea.flow, foot;
+    if (f && (f.step === 'client' || f.step === 'contact')) {
+      var lab = f.step === 'client' ? 'Nom du client' : 'E-mail ou téléphone';
+      foot = '<form class="lea-in" data-form="lea" novalidate><label class="sr" for="lea-field">' + lab + '</label><input id="lea-field" autocomplete="off" placeholder="' + lab + '"><button class="btn btn-small" type="submit">Envoyer</button></form>';
+    } else if (f && f.step === 'type') {
+      foot = '<div class="lea-chips">' + TYPES.map(function (t) { return '<button type="button" class="chip" data-action="lea-type" data-v="' + esc(t[0]) + '">' + esc(t[0]) + '</button>'; }).join('') + '</div>';
+    } else if (f && f.step === 'confirm') {
+      foot = '<div class="lea-chips"><button type="button" class="chip chip-main" data-action="lea-apply">Préparer le document</button><button type="button" class="chip" data-action="lea-cancel">Annuler</button></div>';
+    } else {
+      foot = '<div class="lea-chips">' + leaChips().map(function (c) { return '<button type="button" class="chip" data-action="lea-ask" data-v="' + c[0] + '">' + esc(c[1]) + '</button>'; }).join('') + '</div>';
+    }
+    root.innerHTML = '<section class="lea" id="lea-panel" role="dialog" aria-label="Léa, assistante">' +
+      '<header class="lea-head">' + LEA_AV + '<div><strong>Léa</strong><span>Assistante · réponses préparées (démo)</span></div><button class="lea-close" type="button" data-action="lea-close" aria-label="Fermer Léa">✕</button></header>' +
+      '<div class="lea-log" role="log" aria-live="polite">' + log + '</div><div class="lea-foot">' + foot + '</div></section>';
+    var lg = root.querySelector('.lea-log'); lg.scrollTop = lg.scrollHeight;
+    if (focus === 'input') { var inp = document.getElementById('lea-field'); if (inp) inp.focus(); else { var ch = root.querySelector('.chip'); if (ch) ch.focus(); } }
+    else if (focus === 'close') { var cb = root.querySelector('.lea-close'); if (cb) cb.focus(); }
+  }
+
+  function leaSync(name, arg) {
+    lea.route = { name: name, arg: arg || null };
+    lea.visible = name !== 'client';
+    if (!lea.visible) lea.open = false;
+    leaRender();
+  }
+
   // ---------- Routeur ----------
   var view = document.getElementById('view');
   var NAVMAP = { documents: 'documents', suivi: 'documents', nouveau: 'nouveau', destinataire: 'nouveau', envoi: 'nouveau', client: 'client' };
@@ -231,6 +380,7 @@
     });
     view.focus({ preventScroll: true });
     window.scrollTo(0, 0);
+    leaSync(name, parts[1]);
     if (state.flash) { toast(state.flash); state.flash = ''; save(); }
   }
   window.addEventListener('hashchange', route);
@@ -240,6 +390,7 @@
     var a = e.target.closest('[data-action]');
     if (!a) return;
     var act = a.getAttribute('data-action');
+    if (act.indexOf('lea-') === 0) { leaAction(act, a); return; }
     if (act === 'filter') { state.filter = a.getAttribute('data-v'); save(); route(); }
     else if (act === 'send') {
       var d = state.draft, id = 'd' + Date.now();
@@ -273,6 +424,7 @@
     if (!form) return;
     e.preventDefault();
     var kind = form.getAttribute('data-form');
+    if (kind === 'lea') { leaSubmit(); return; }
     if (kind === 'type') {
       var picked = form.querySelector('input[name="type"]:checked');
       var changed = picked && picked.value !== state.draft.type;
@@ -291,7 +443,11 @@
     }
   });
 
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sheetOpener) closeSheet(true); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (sheetOpener) closeSheet(true);
+    else if (lea.open) leaClose();
+  });
 
   route();
 })();

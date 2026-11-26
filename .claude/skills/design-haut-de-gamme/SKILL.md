@@ -70,7 +70,8 @@ Si l'utilisateur veut « une petite appli / un SaaS / une web app » (comme une 
 5. **Sécurité de base** : tout texte saisi par l'utilisateur qui est réaffiché passe par une fonction d'échappement HTML. Teste-le avec `<b>Test</b>`.
 6. **Navigation** : barre latérale sur bureau, barre d'onglets en bas sur mobile ; `aria-current`, focus sur le titre à chaque changement d'écran, feuille de partage fermable à Échap, `aria-live` pour les messages.
 7. **Interactions réelles quand c'est possible** : par ex. un vrai cadre de signature au doigt (canvas, événements pointeur) plutôt qu'une image.
-8. **Mascotte** : uniquement sur l'écran de succès (et l'accueil de la vitrine).
+8. **Mascotte** : animée uniquement sur l'écran de succès (et l'accueil de la vitrine). Elle peut aussi servir d'avatar **fixe** à l'assistant.
+8 bis. **Assistant intégré** (ex. « Léa ») si demandé : bouton flottant, panneau (feuille en bas sur mobile, carte sur bureau). Réponses **préparées à l'avance**, contextuelles à l'écran (liste de boutons-questions), plus un **parcours guidé qui remplit le formulaire** (type → client → contact → message proposé → « Préparer » → écran récapitulatif). Dis clairement dans le panneau que ce sont des réponses préparées (démo), jamais « IA » si ça n'en est pas une. Pas de zone de texte libre hors parcours guidé. Masqué sur la vue du client. Fermable à Échap, focus géré, texte saisi échappé.
 9. Relie la vitrine à la démo (bouton « Essayer la démo »).
 
 ### 5. Vérifier (obligatoire)
